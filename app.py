@@ -4,6 +4,7 @@ from PIL import Image
 import re
 import time
 
+
 st.set_page_config(page_title="CNPJ Chek", page_icon=None, layout='centered', initial_sidebar_state='collapsed', menu_items=None)
 
 foto = Image.open('RGB_logoslaranja_pack_prioritario.png')
@@ -11,7 +12,7 @@ st.image(foto)
 st.markdown("<h1 style='text-align: center; color: DimGrey;'>Verificador de CNPJ</h1>", unsafe_allow_html=True)
 
 
-sheet_url = "https://docs.google.com/spreadsheets/d/16pr14Fk6XQTAc5T02Gjgf-Ecl_8RDGdeSkWk1_-6VwQ/edit#gid=0"
+sheet_url = st.secrets["public_gsheets_url"]
 url_1 = sheet_url.replace('/edit#gid=', '/export?format=csv&gid=')
 
 df = pd.read_csv(url_1)
