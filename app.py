@@ -60,12 +60,12 @@ elif input_cnpj != '':
     time.sleep(1)
     
     # verificamos se o cnpj já existe no dataframe
-    if input_cnpj not in set(df.index):
+    if reformat_cnpj not in set(df.index):
         # se não estiver, automaticamente ele pode cadastrar
         st.markdown("<h2 style='text-align: center; color: Green;'>Você pode cadastrar este CNPJ</h1>", unsafe_allow_html=True)
     
     # se tiver presente, precisamos identificar o status 
-    elif input_cnpj in set(df.index):
+    elif reformat_cnpj in set(df.index):
         #armazenamos a resposta de "go" ou "ngo" na variável "answer"
         answer = df.loc[reformat_cnpj][0]
 
