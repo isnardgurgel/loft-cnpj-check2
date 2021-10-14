@@ -27,12 +27,15 @@ df.drop_duplicates(subset=['CNPJ'], inplace=True)
 # Transformamos a coluna CNPJ em index para poder realizar buscas com .iloc no pandas
 df.set_index("CNPJ", inplace=True)
 
+# Instruções de uso da ferramenta
+st.markdown("<h5 style='text-align: center; color: Grey;'>Digite ou copie e cole os números do CNPJ que deseja consultar.<br> Você pode colocar apenas os números '0000000000000' (13 dígitos)<br>ou usando o formato pradão '00.000.000/0000-00' (18 dígitos) </h1>", unsafe_allow_html=True)
+
 # Campo de input do CNPJ
 input_cnpj = st.text_input(
       # o primeiro valor é a label    
-      'Digite os números do CNPJ',
+      'Após inserir o CNPJ, aperte enter no teclado do seu computador ou do seu celular.',
       # o segundo valor serve de referência 
-      value = '00.000.000/0000-00',
+      value = '',
       # colocamos o máximo de caracteres mas veremos que o script aceita apenas os números sem "." "-"  ou "/"
       max_chars = 18
 
@@ -41,11 +44,11 @@ input_cnpj = st.text_input(
 count = 0
 
 # este if considera o state inicial como padrão e nao faz nada até que o usuário add os números
-if input_cnpj == '00.000.000/0000-00':
+if input_cnpj == '':
     count +=1
 
 # quando temos uma mudança no estado inicial, o script começa
-elif input_cnpj != '00.000.000/0000-00':
+elif input_cnpj != '':
     # retiramos todos os "." "-" e "/" (caso tenha no input)
     cnpj_p1 = re.sub('[^A-Za-z0-9]+', '', input_cnpj)
     # reformatamos (principalmente para caso o usuário tenha colocado apenas os números)
