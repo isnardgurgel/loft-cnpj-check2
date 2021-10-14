@@ -28,7 +28,7 @@ df.drop_duplicates(subset=['CNPJ'], inplace=True)
 df.set_index("CNPJ", inplace=True)
 
 # Instruções de uso da ferramenta
-st.markdown("<h5 style='text-align: center; color: Grey;'>Digite ou copie e cole os números do CNPJ que deseja consultar.<br> Você pode colocar apenas os números '0000000000000' (13 dígitos)<br>ou usando o formato pradão '00.000.000/0000-00' (18 dígitos) </h1>", unsafe_allow_html=True)
+st.markdown("<h5 style='text-align: center; color: Grey;'>Digite ou copie e cole os números do CNPJ que deseja consultar.<br> Você pode colocar apenas os números '00000000000000' (14 dígitos)<br>ou usando o formato pradão '00.000.000/0000-00' (18 dígitos) </h1>", unsafe_allow_html=True)
 
 # Campo de input do CNPJ
 input_cnpj = st.text_input(
