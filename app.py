@@ -3,9 +3,12 @@ import pandas as pd
 from PIL import Image
 import re
 import time
+from datetime import datetime
+
+
 
 #setup do título da página
-st.set_page_config(page_title="CNPJ Chek", page_icon=None, layout='centered', initial_sidebar_state='collapsed', menu_items=None)
+st.set_page_config(page_title="CNPJ Check", page_icon=None, layout='centered', initial_sidebar_state='collapsed', menu_items=None)
 
 #call para abrir a imagem da loft na página
 foto = Image.open('RGB_logoslaranja_pack_prioritario.png')
@@ -46,16 +49,19 @@ count = 0
 # este if considera o state inicial como padrão e nao faz nada até que o usuário add os números
 if input_cnpj == '':
     count +=1
+    
+    
 
 # quando temos uma mudança no estado inicial, o script começa
 elif input_cnpj != '':
     # retiramos todos os "." "-" e "/" (caso tenha no input)
     cnpj_p1 = re.sub('[^A-Za-z0-9]+', '', input_cnpj)
+    
     # reformatamos (principalmente para caso o usuário tenha colocado apenas os números)
     reformat_cnpj = cnpj_p1[:2] + "." + cnpj_p1[2:5] + "." + cnpj_p1[5:8] + "/" + cnpj_p1[8:12] + "-" + cnpj_p1[-2:] 
     # devolvemos um feedback para o usuário de que estamos analizando
     st.write(f"Verificando o CNPJ {reformat_cnpj} ...")
-
+  
     # o sistema em geral é muito rápido, então damos uma pausa de 1 segundo
     time.sleep(1)
     
@@ -69,13 +75,14 @@ elif input_cnpj != '':
         #armazenamos a resposta de "go" ou "ngo" na variável "answer"
         answer = df.loc[reformat_cnpj][0]
 
-        # se a resposta for "go"
-        if answer == 'go':
-            st.markdown("<h2 style='text-align: center; color: Green;'>Você pode cadastrar este CNPJ</h1>", unsafe_allow_html=True)
+        # se a resposta for "call"
+        if answer == 'call':
+            st.markdown("<h3 style='text-align: center; color: Green;'>Para cadastrar este CNPJ entre em contato com o Rômulo!</h1>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: center; color: Green;'><a href='mailto:romulo.prestes@loft.com.br'>romulo.prestes@loft.com.br</a></h1>", unsafe_allow_html=True)
         # se a resposta for "ngo"
         else:
             st.markdown("<h2 style='text-align: center; color: Red;'>Você não pode cadastrar este CNPJ</h1>", unsafe_allow_html=True)
-
+    
 
 
 
