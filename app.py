@@ -78,7 +78,7 @@ elif input_cnpj != '':
         # se a resposta for "call"
         if answer == 'call':
             st.markdown("<h3 style='text-align: center; color: Green;'>Para cadastrar este CNPJ entre em contato com o Rômulo!</h1>", unsafe_allow_html=True)
-            st.markdown("<h5 style='text-align: center; color: Green;'><a href='mailto:romulo.prestes@loft.com.br'>romulo.prestes@loft.com.br</a></h1>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: center; color: Green;'><a href='mailto:luciano.conceicao@loft.com.br'>luciano.conceicao@loft.com.br</a></h1>", unsafe_allow_html=True)
         # se a resposta for "ngo"
         else:
             st.markdown("<h2 style='text-align: center; color: Red;'>Você não pode cadastrar este CNPJ</h1>", unsafe_allow_html=True)
